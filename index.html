@@ -1,0 +1,26 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <input type='button' id='g' value='G' />
+        <input type='button' id='c' value='C' />
+        <input type='button' id='e' value='E' />
+        <input type='button' id='a' value='A' />
+        <script>
+            var audioCtx = new AudioContext();
+            function playFrequency(frequency) {
+                oscillator = audioCtx.createOscillator(); // Create sound source
+                oscillator.connect(audioCtx.destination); // Connect sound to output
+                oscillator.type = 'triangle';
+                oscillator.frequency.value = frequency;
+                oscillator.start();
+                oscillator.stop(audioCtx.currentTime + 1);
+            }
+            document.getElementById('g').onclick = function(){ playFrequency(392.00) };
+            document.getElementById('c').onclick = function(){ playFrequency(261.6) };
+            document.getElementById('e').onclick = function(){ playFrequency(329.628) };
+            document.getElementById('a').onclick = function(){ playFrequency(440) };
+        </script>
+    </body>
+</html>
+
